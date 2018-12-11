@@ -11,7 +11,7 @@
 	<groupId>fi.haagahelia.spring</groupId>
 	<artifactId>weatherdiary</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>weatherdiary</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -32,10 +32,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
@@ -49,6 +45,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		 <dependency>
+		   <groupId>org.springframework.boot</groupId>
+		   <artifactId>spring-boot-starter-security</artifactId>
+		 </dependency>
+		 <dependency>
+		  <groupId>io.jsonwebtoken</groupId>
+		  <artifactId>jjwt</artifactId>
+		  <version>0.9.0</version>
+		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -58,9 +63,10 @@
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
 		</dependency>
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-tomcat</artifactId> 
-			<scope>provided</scope> </dependency> this part is removed from comments 
-			when doing war packaging -->
+		 <dependency> <groupId>org.springframework.boot</groupId> 
+		 	<artifactId>spring-boot-starter-tomcat</artifactId> 
+			<scope>provided</scope> 
+		</dependency> 
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>

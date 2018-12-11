@@ -1,13 +1,22 @@
 	CREATE TABLE IF NOT EXISTS weatheruser (
-	weatheruser_id int NOT NULL PRIMARY KEY,
-	weatheruser_name varchar(50),
-	name varchar(50)
+	id int NOT NULL PRIMARY KEY,	
+	user_name varchar(50),
+	password varchar(20),
+	name varchar(50),
+	role varchar(50)
 	);
 
 	CREATE TABLE IF NOT EXISTS weather (
 	weather_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	weather_text varchar(500),
-	location varchar(50),
 	weatherdate date NOT NULL,
-	CONSTRAINT FOREIGN KEY (weather_id)
+	location varchar(50),
+	temperature varchar(20),
+	description varchar(50)
+	);
+	
+	CREATE TABLE IF NOT EXISTS user (
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	username varchar(10),
+	password varchar(100),
+	role varchar(10)
 	);

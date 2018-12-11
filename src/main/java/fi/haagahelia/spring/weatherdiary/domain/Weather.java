@@ -1,4 +1,4 @@
-package fi.hh.SWD4TN022.saapaivakirja.domain;
+package fi.haagahelia.spring.weatherdiary.domain;
 
 import java.sql.Date;
 
@@ -19,22 +19,35 @@ public class Weather {
 	@Id
 	@Column(name="weather_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private Long weatherid;
 	
-	@Column(name="weather_text")
-	private String weathertext;
+	/**
+	 * @param weatherdate
+	 * @param location
+	 * @param temperature
+	 * @param description
+	 */
+	public Weather(Date weatherdate, String location, String temperature,
+			String description) {
+		super();
+		this.weatherdate = weatherdate;
+		this.location = location;
+		this.temperature = temperature;
+		this.description = description;
+	}
+
+	@Column(name="weatherdate")
+	private Date weatherdate;	
 	
 	@Column(name="location")
 	private String location;
 	
-	@Column(name="weatherdate")
-	private Date date;
+	@Column(name="temperature")
+	private String temperature;
 	
-//	@ManyToOne
-//	@JsonIgnore
-//	@JoinColumn(name = "question_Id")
-//	private Question question;	
-
+	@Column(name="description")
+	private String description;
+	
 	/**
 	 * 
 	 */
@@ -43,52 +56,52 @@ public class Weather {
 	
 	/**
 	 * @param id
-	 * @param weathertext
+	 * @param description
 	 * @param location
 	 * @param date
 	 */
-	public Weather(Long id, String weathertext, String location, Date date) {
+	public Weather(Long id, String description, String location, Date date) {
 		super();
-		this.id = id;
-		this.weathertext = weathertext;
+		this.weatherid = id;
+		this.description = description;
 		this.location = location;
-		this.date = date;
+		this.weatherdate = date;
 	}
 
 	/**
-	 * @param weathertext
+	 * @param description
 	 * @param location
 	 */
-	public Weather(String weathertext, String location) {
+	public Weather(String description, String location) {
 		super();
-		this.weathertext = weathertext;
+		this.description = description;
 		this.location = location;
 	}
 		
 
 	/**
 	 * @param id
-	 * @param weathertext
+	 * @param description
 	 * @param location
 	 */
-	public Weather(Long id, String weathertext, String location) {
+	public Weather(Long id, String description, String location) {
 		super();
-		this.id = id;
-		this.weathertext = weathertext;
+		this.weatherid = id;
+		this.description = description;
 		this.location = location;
 
 	}	
 
 	/**
-	 * @param weathertext
+	 * @param description
 	 * @param location
 	 * @param date
 	 */
-	public Weather(String weathertext, String location, Date date) {
+	public Weather(String description, String location, Date date) {
 		super();
-		this.weathertext = weathertext;
+		this.description = description;
 		this.location = location;
-		this.date = date;
+		this.weatherdate = date;
 	}	
 
 	/**
@@ -98,35 +111,49 @@ public class Weather {
 	public Weather(String location, Date date) {
 		super();
 		this.location = location;
-		this.date = date;
+		this.weatherdate = date;
+	}
+	
+	/**
+	 * @return the weatherid
+	 */
+	public Long getWeatherid() {
+		return weatherid;
 	}
 
+	/**
+	 * @param weatherid the weatherid to set
+	 */
+	public void setWeatherid(Long weatherid) {
+		this.weatherid = weatherid;
+	}
+
+	/**
+	 * @return the weatherdate
+	 */
+	public Date getWeatherdate() {
+		return weatherdate;
+	}
+
+	/**
+	 * @param weatherdate the weatherdate to set
+	 */
+	public void setWeatherdate(Date weatherdate) {
+		this.weatherdate = weatherdate;
+	}
+
+	/**
+	 * @param weathertext the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the weathertext
-	 */
-	public String getWeathertext() {
-		return weathertext;
-	}
-
-	/**
-	 * @param weathertext the weathertext to set
-	 */
-	public void setWeathertext(String weathertext) {
-		this.weathertext = weathertext;
+	public String getDescription() {
+		return description;
 	}
 
 	/**
@@ -147,14 +174,28 @@ public class Weather {
 	 * @return the date
 	 */
 	public Date getDate() {
-		return date;
+		return weatherdate;
 	}
 
 	/**
 	 * @param date the date to set
 	 */
 	public void setDate(Date date) {
-		this.date = date;
+		this.weatherdate = date;
+	}
+	
+	/**
+	 * @return the temperature
+	 */
+	public String getTemperature() {
+		return temperature;
+	}
+
+	/**
+	 * @param temperature the temperature to set
+	 */
+	public void setTemperature(String temperature) {
+		this.temperature = temperature;
 	}
 
 	/* (non-Javadoc)
@@ -162,8 +203,8 @@ public class Weather {
 	 */
 	@Override
 	public String toString() {
-		return "Weather [id=" + id + ", weathertext=" + weathertext
-				+ ", location=" + location + ", date=" + date + "]";
+		return "Weather [id=" + weatherid + ", description=" + description
+				+ ", location=" + location + ", temperature=" + temperature+ ", date=" + weatherdate + "]";
 	}
 	
 }
